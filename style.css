@@ -1,0 +1,18 @@
+body,html{
+    margin: 0;
+    padding: 0;
+}
+main {
+    display: flex;
+    justify-content: space-between;
+    padding: 10em 10em;
+    gap: 5px;
+}
+
+
+.logo-img{
+    width: 9em;
+    border-radius: 25%;
+    border: 2px solid black;
+    box-shadow: 1px 1px 5px #999;
+}
