@@ -14,17 +14,28 @@ form.addEventListener('submit', (e) =>{
     const itemName = e.target.elements['itemName']
     const quantity = e.target.elements['quantity']
 
+    //Find an existence item in the array
+    const isThere = itens.find(element => element.itemName === itemName.value)
     
     const actualItem = {
         "itemName": itemName.value,
         "quantity": quantity.value
     }        
+    
+    if(isThere) {
+        actualItem.id = isThere.id
+    } else{
 
-    createElement(actualItem)
+        actualItem.id = itens.length
+
+        createElement(actualItem)
+    
+    
+        //Insert new itens on the Object, which will be relocate in the LocalStorage
+        itens.push(actualItem)
+    }
 
 
-    //Insert new itens on the Object, which will be relocate in the LocalStorage
-    itens.push(actualItem)
 
     localStorage.setItem('itens', JSON.stringify(itens))
     
@@ -42,6 +53,7 @@ function createElement(item){
     //Create a variable to capture the quantity
     const itemNumber = document.createElement('strong')
     itemNumber.innerHTML = item.quantity
+    itemNumber.dataset.id = item.id
 
     //Implement the element value in the variable
     newItem.appendChild(itemNumber)
