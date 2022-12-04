@@ -1,6 +1,12 @@
 const form = document.getElementById('newItem')
 const list = document.getElementById('list')
-const itens = []
+//verify if has itens, if not return a empty array
+//Transform in parse, because localStorage read as string
+const itens = JSON.parse(localStorage.getItem("itens")) || []
+
+itens.forEach((element) =>{
+    createElement(element)
+})
 
 form.addEventListener('submit', (e) =>{
     e.preventDefault()
@@ -8,7 +14,19 @@ form.addEventListener('submit', (e) =>{
     const itemName = e.target.elements['itemName']
     const quantity = e.target.elements['quantity']
 
-    createElement(itemName.value,quantity.value)
+    
+    const actualItem = {
+        "itemName": itemName.value,
+        "quantity": quantity.value
+    }        
+
+    createElement(actualItem)
+
+
+    //Insert new itens on the Object, which will be relocate in the LocalStorage
+    itens.push(actualItem)
+
+    localStorage.setItem('itens', JSON.stringify(itens))
     
     itemName.value = ""
     quantity.value = ""
@@ -16,35 +34,19 @@ form.addEventListener('submit', (e) =>{
 
 })
 
-function createElement(itemName,quantity){
-
-    console.log(itemName)
-    console.log(quantity)
-
+function createElement(item){
     //Create an element and bring the class with it. Obs:It's not bring the element value 
     const newItem = document.createElement('li')
     newItem.classList.add('item')
 
     //Create a variable to capture the quantity
     const itemNumber = document.createElement('strong')
-    itemNumber.innerHTML = quantity
+    itemNumber.innerHTML = item.quantity
 
     //Implement the element value in the variable
     newItem.appendChild(itemNumber)
-    newItem.innerHTML += itemName
+    newItem.innerHTML += item.itemName
 
     //Add name and quantity to the list
     list.appendChild(newItem)
-
-    //Object
-    const actualItem = {
-        'name':itemName,
-        'quantity':quantity
-    }
-
-    //Insert new itens on the Object, which will be relocate in the LocalStorage
-    itens.push(actualItem)
-
-    localStorage.setItem('itens', JSON.stringify(itens))
-
 }
