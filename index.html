@@ -3,6 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@300;600;900&display=swap" rel="stylesheet">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
     <link rel="icon" type="image/png" sizes="32x32" href="/Images/buy_cart-icon.png">
@@ -17,7 +20,7 @@
             </div>
             <form action="" class="addItem" id="newItem">
                 <label for="item">Item Name</label>
-                <input type="text" name="nameItem" id="nameItem">
+                <input type="text" name="itemName" id="itemName">
                 <label for="quantity">Quantity</label>
                 <input type="number" name="quantity" id="quantity">
                 <input type="submit" value="Add Item" class="register" id="register">
@@ -25,12 +28,16 @@
         </section>
         <aside>
             <ul class="list" id="list">
-                <li><strong>1</strong>Banana</li>
+                <li class="item"><strong>1</strong>Banana</li>
+                <li class="item"><strong>1</strong>Banana</li>
+                <li class="item"><strong>1</strong>Banana</li>
             </ul>
         </aside>
 
 
     </main>
+
+    <script src="mains.js"></script>
 </body>
 
 </html>
