@@ -1,24 +1,27 @@
 body,
 html {
+    background-color: #2a9d8f;
+    font-family: 'Rubik', sans-serif;
     margin: 0;
     padding: 0;
-    font-family: 'Rubik', sans-serif;
-    background-color: #ffcdb2;
 }
 
 main {
     display: flex;
-    justify-content: space-between;
-    padding: 5em 10em;
+    flex-direction: column;
     gap: 5px;
+    justify-content: space-between;
+    padding: 3em 3em;
+    margin: 2em auto;
 }
 
 section{
-    background-color: #ffb4a2;
-    padding: 2em;
+    background-color: #ffcdb2;
     border: 5px solid black;
-    box-shadow: 1px 1px 10px #000;
     border-radius: .7em;
+    box-shadow: 1px 1px 10px #000;
+    padding: 2em;
+    margin: 1em auto;
 }
 
 .logo{
@@ -27,26 +30,29 @@ section{
 
 .logo-img {
     width: 9em;
-    border-radius: 25%;
-    border: 2px solid black;
-    box-shadow: 1px 1px 5px #999;
-    
+    border: none; 
 }
 
 input {
-    width: 100%;
+    cursor: pointer;
+    border: 2px solid #40112D;
+    border-radius: 10px;
     box-sizing: border-box;
+    font-weight: bold;
     margin: 0.5em 0 1em;
     padding: 1em 0.5em;
-    border-radius: 10px;
-    border: 2px solid #40112D;
-    font-weight: bold;
-    cursor: pointer;
+    width: 100%;
 }
 
 label {
-    font-weight: bold;
     font-size: 1.2em;
+    font-weight: bold;
+}
+
+aside{
+    margin: 1em auto;
+    min-width: 380px;
+    width: 40%;
 }
 
 .register {
@@ -60,28 +66,40 @@ label {
     background-color: #6d6875;
 }
 
+ul{
+    padding: 0;
+}
+
 .item {
-    list-style: none;
-    padding: 0.6em 2em;
+    align-items: center;
     background: #FFFFFF;
     border-radius: 10px;
-    margin: 0 0 1em;
-    width: 100%;
     box-sizing: border-box;
     display: inline-flex;
-    align-items: center;
-    gap: 1em;
     font-size: 20px;
     font-weight: bold;
+    gap: 1em;
+    list-style: none;
+    margin: 0 0 1em;
+    padding: 0.6em 2em;
+    width: 100%;
 }
 
 .item strong {
+    align-items: center;
+    background: #bde0fe;
     border-radius: 50%;
     display: flex;
-    align-items: center;
+    font-weight: bold;
+    height: 40px;
     justify-content: center;
     width: 40px;
-    height: 40px;
-    Background: #bde0fe;
+}
+
+button{
+    cursor: pointer;
+    border: 2px solid red;
+    border-radius: 2em;
     font-weight: bold;
+    font-family: 'Rubik', sans-serif;
 }

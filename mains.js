@@ -22,11 +22,15 @@ form.addEventListener('submit', (e) =>{
         "quantity": quantity.value
     }        
     
+    
     if(isThere) {
         actualItem.id = isThere.id
+        refreshElement(actualItem)
+
+        itens[itens.findIndex(element=> element.id === isThere.id)] = actualItem
     } else{
 
-        actualItem.id = itens.length
+        actualItem.id = itens[itens.length - 1] ? (itens[itens.length - 1]).id + 1 : 0;
 
         createElement(actualItem)
     
@@ -59,6 +63,37 @@ function createElement(item){
     newItem.appendChild(itemNumber)
     newItem.innerHTML += item.itemName
 
+    newItem.appendChild(deleteBtn(item.id))
+
     //Add name and quantity to the list
     list.appendChild(newItem)
+}
+
+
+function refreshElement(item) {
+    //Refresh itens, adding the quantity that was wrote
+    document.querySelector("[data-id='"+item.id+"']").innerHTML = item.quantity
+}
+
+function deleteBtn(id){
+    const elementBtn = document.createElement('button')
+    elementBtn.innerText = "X"
+
+    elementBtn.addEventListener('click', function(){
+        deleteElement(this.parentNode,id)
+    })
+
+    return elementBtn
+}
+
+function deleteElement(tag,id){
+    tag.remove()
+    
+    //remove item from Array
+    itens.splice(itens.findIndex(element=> element.id === id),1)
+
+    console.log(itens)
+
+    //write again in the LocalStorage
+    localStorage.setItem("itens",JSON.stringify(itens))
 }
